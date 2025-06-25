@@ -66,16 +66,9 @@ namespace Engine.ViewModels
 
         public GameSession()
         {
-            CurrentPlayer = new Player();
-            CurrentPlayer.Name = "Scott";
-            CurrentPlayer.CharacterClass = "Fighter";
-            CurrentPlayer.Gold = 1000000;
-            CurrentPlayer.HitPoints = 10;
-            CurrentPlayer.ExperiencePoints = 0;
-            CurrentPlayer.Level = 1;
+            CurrentPlayer = new Player { Name = "Scott", CharacterClass = "Fighter", Gold = 1000000, HitPoints = 10, ExperiencePoints = 0, Level = 1};
 
-            WorldFactory factory = new WorldFactory();
-            CurrentWorld = factory.CreateWorld();
+            CurrentWorld = WorldFactory.CreateWorld();
 
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
@@ -83,21 +76,25 @@ namespace Engine.ViewModels
         public void MoveNorth()
         {
             if (CurrentLocation == null) return;
+            if (!HasLocationToNorth) return;
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
         }
         public void MoveWest()
         {
             if (CurrentLocation == null) return;
+            if (!HasLocationToWest) return;
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
         }
         public void MoveEast()
         {
             if (CurrentLocation == null) return;
+            if (!HasLocationToEast) return;
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate);
         }
         public void MoveSouth()
         {
             if (CurrentLocation == null) return;
+            if (!HasLocationToSouth) return;
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1);
         }
     }
