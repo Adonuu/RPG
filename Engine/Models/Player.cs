@@ -71,6 +71,14 @@ namespace Engine.Models
         }
 
         public ObservableCollection<GameItem> Inventory { get; set; } = new ObservableCollection<GameItem>();
+        public List<GameItem> Weapons => Inventory.Where(i => i is Weapon).ToList();
         public ObservableCollection<QuestStatus> Quests { get; set; } = new ObservableCollection<QuestStatus>();
+
+        public void AddItemToInventory(GameItem item)
+        {
+            Inventory.Add(item);
+
+            OnPropertyChanged(nameof(Weapons));
+        }
     }
 }

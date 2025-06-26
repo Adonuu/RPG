@@ -46,8 +46,12 @@ namespace WPFUI
         {
             _gameSession.MoveSouth();
         }
+        private void OnClick_AttackMonster(object sender, RoutedEventArgs e)
+        {
+            _gameSession.AttackCurrentMonster();
+        }
 
-        private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
+        private void OnGameMessageRaised(object? sender, GameMessageEventArgs e)
         {
             GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
             GameMessages.ScrollToEnd();
