@@ -23,7 +23,7 @@ namespace Engine.Factories
             _quests.Add(new Quest(1, "Clear the Herb Garden", "Defeat the snakes in the Herbalist's garden", itemsToComplete, 25, 10, rewardItems));
         }
 
-        internal static Quest? GetQuestById(int id)
+        internal static Quest? GetQuestByID(int id)
         {
             return _quests.FirstOrDefault(quest => quest.ID == id);
         }
